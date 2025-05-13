@@ -1,6 +1,14 @@
-module.exports = {
+export default {
   // Test environment setup
   testEnvironment: 'node',
+  
+  // ES Module support
+  extensionsToTreatAsEsm: ['.js'],
+  
+  // Transform configuration
+  transform: {
+    '^.+\\.js$': 'babel-jest'
+  },
   
   // Coverage configuration
   collectCoverage: true,
@@ -8,10 +16,10 @@ module.exports = {
   coverageReporters: ['text', 'lcov'],
   coverageThreshold: {
     global: {
-      branches: 80,
-      functions: 80,
-      lines: 80,
-      statements: 80
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100
     }
   },
   
@@ -26,6 +34,11 @@ module.exports = {
     '/node_modules/',
     '/dist/'
   ],
+  
+  // Module mapping for ES modules
+  moduleNameMapper: {
+    '^(\\.{1,2}/.*)\\.js$': '$1'
+  },
   
   // Verbose output for better debugging
   verbose: true
