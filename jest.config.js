@@ -1,19 +1,16 @@
 export default {
-  // Test environment setup
   testEnvironment: 'node',
-  
-  // ES Module support
   extensionsToTreatAsEsm: ['.js'],
-  
-  // Transform configuration
   transform: {
     '^.+\\.js$': 'babel-jest'
   },
-  
-  // Coverage configuration
+  transformIgnorePatterns: [
+    'node_modules/(?!.*\\.js$)'
+  ],
+  moduleFileExtensions: ['js', 'mjs'],
   collectCoverage: true,
   coverageDirectory: 'coverage',
-  coverageReporters: ['text', 'lcov'],
+  coverageReporters: ['text', 'lcov', 'json'],
   coverageThreshold: {
     global: {
       branches: 100,
@@ -22,24 +19,13 @@ export default {
       statements: 100
     }
   },
-  
-  // Test match patterns
   testMatch: [
     '**/__tests__/**/*.js',
     '**/?(*.)+(spec|test).js'
   ],
-  
-  // Ignore certain directories
   testPathIgnorePatterns: [
     '/node_modules/',
     '/dist/'
   ],
-  
-  // Module mapping for ES modules
-  moduleNameMapper: {
-    '^(\\.{1,2}/.*)\\.js$': '$1'
-  },
-  
-  // Verbose output for better debugging
   verbose: true
 };
